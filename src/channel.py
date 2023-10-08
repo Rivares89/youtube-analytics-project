@@ -20,10 +20,6 @@ class Channel:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         self.channel_id = channel_id
         self.channel_id = 'UCwHL6WHUarjGfUM_586me8w'  # HighLoad Channel
-        # channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
-        # printj(channel)
-
-
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
