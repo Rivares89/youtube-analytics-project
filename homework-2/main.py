@@ -3,7 +3,7 @@ import os
 
 if __name__ == '__main__':
     moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
-
+    # print(moscowpython.channel_id)
     print(moscowpython.channel_info)
     #
     # получаем значения атрибутов

@@ -39,7 +39,7 @@ class Channel:
     def to_json(self, filename):
         """Выводит словарь в json-подобном удобном формате с отступами"""
         with open(filename, 'w') as file:
-            json.dump(self.channel_info, filename)
+            json.dump(self.channel_info, file)
 
 def printj(dict_to_print: dict) -> None:
     """Выводит словарь в json-подобном удобном формате с отступами"""
