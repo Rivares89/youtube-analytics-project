@@ -14,8 +14,34 @@ class Channel:
         self.desc = self.channel_info["items"][0]["snippet"]["description"]
         self.url = "https://www.youtube.com/channel/" + self.__channel_id
         self.channel_subs_count = self.channel_info["items"][0]["statistics"]["subscriberCount"]
+        # self.channel_subs_count = self.channel_info["items"][0]["statistics"]["subscriberCount"]
         self.video_count = self.channel_info["items"][0]["statistics"]["videoCount"]
         self.channel_views = self.channel_info["items"][0]["statistics"]["viewCount"]
+
+    def __str__(self):
+        return f'{self.title} {self.url}'
+
+    def __add__(self, other):
+        return self.channel_subs_count + other.channel_subs_count
+
+    def __sub__(self, other):
+        return int(self.channel_subs_count) - int(other.channel_subs_count)
+
+    def __gt__(self, other):
+        return self.channel_subs_count > other.channel_subs_count
+
+    def __ge__(self, other):
+        return self.channel_subs_count >= other.channel_subs_count
+
+    def __lt__(self, other):
+        return self.channel_subs_count < other.channel_subs_count
+
+    def __le__(self, other):
+        return self.channel_subs_count <= other.channel_subs_count
+
+    def __eq__(self, other):
+        return self.channel_subs_count == other.channel_subs_count
+
 
     # создать специальный объект для работы с API
     api_key = os.getenv('YOUTUBE_API_KEY')
@@ -39,7 +65,7 @@ class Channel:
     def to_json(self, filename):
         """Выводит словарь в json-подобном удобном формате с отступами"""
         with open(filename, 'w') as file:
-            json.dump(self.channel_info, file)
+            json.dump(self.channel_info, file, indent=4)
 
 def printj(dict_to_print: dict) -> None:
     """Выводит словарь в json-подобном удобном формате с отступами"""
