@@ -9,10 +9,16 @@ class Video:
     youtube = build('youtube', 'v3', developerKey=api_key)
     def __init__(self, video_id):
         self.video_id = video_id
-        self.title = self.get_video_info()["items"][0]["snippet"]["title"]
-        self.video_url = f'https://www.youtube.com/watch?v=' + self.video_id
-        self.viewCount = self.get_video_info()["items"][0]["statistics"]["viewCount"]
-        self.likeCount = self.get_video_info()["items"][0]["statistics"]["likeCount"]
+        try:
+            self.title = self.get_video_info()["items"][0]["snippet"]["title"]
+            self.video_url = f'https://www.youtube.com/watch?v=' + self.video_id
+            self.viewCount = self.get_video_info()["items"][0]["statistics"]["viewCount"]
+            self.likeCount = self.get_video_info()["items"][0]["statistics"]["likeCount"]
+        except IndexError:
+            self.title = None
+            self.video_url = None
+            self.viewCount = None
+            self.likeCount = None
 
     def __str__(self):
         return f'{self.title}'
